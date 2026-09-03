@@ -5,8 +5,8 @@ import {NgClass, NgStyle} from "@angular/common";
   selector: 'app-category-card',
   standalone: true,
   imports: [
-    NgStyle,
-    NgClass
+    // NgStyle,
+    // NgClass
   ],
   templateUrl: './category-card.component.html',
   styleUrl: './category-card.component.scss',

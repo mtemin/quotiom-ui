@@ -9,8 +9,8 @@ import {NavbarComponent} from "../../../components/navbar/navbar.component";
   selector: 'app-quote-detail',
   standalone: true,
   imports: [
-    QuoteComponent,
-    NgForOf,
+    // QuoteComponent,
+    // NgForOf,
     NavbarComponent
   ],
   templateUrl: './quote-detail.component.html',

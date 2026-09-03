@@ -11,7 +11,7 @@ import {quotes} from "../../mockDB/quotes";
   standalone: true,
   imports: [
     NavbarComponent,
-    CategoryCardComponent,
+    // CategoryCardComponent,
 
     NgForOf,
     QuoteComponent,

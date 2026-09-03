@@ -1,17 +1,24 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideOptimus } from '@openng/optimus-ui/config';
 import { provideStore } from '@ngrx/store';
-import { provideAnimations } from "@angular/platform-browser/animations";
-import { counterReducer } from './state/counter/counter.reducer';
+import Aura from '@openng/optimus-ui-themes/aura';
+import Material from '@openng/optimus-ui-themes/material';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideAnimations(),
     provideClientHydration(),
-    provideStore({ count: counterReducer })
-  ]
+    provideStore(),
+    provideOptimus({
+          theme: {
+              preset: Aura
+          }
+      }
+    )
+  ],
 };

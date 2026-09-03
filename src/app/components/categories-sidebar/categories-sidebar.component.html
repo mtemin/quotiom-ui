@@ -1,21 +1,29 @@
 <aside id="categories-sidebar">
-  <p-accordion>
-    <p-accordionTab header="Movies">
-      <a [href]="'/movie/' + movie.id" class="" *ngFor="let movie of movies">
-        {{movie.title}}
-      </a>
-    </p-accordionTab>
-    <p-accordionTab header="People">
-      <a [href]="'/person/' + person.id" class="" *ngFor="let person of famousPeople">
-        {{person.name}}
-      </a>
-    </p-accordionTab>
-    <p-accordionTab header="Books">
-      <a [href]="'/book/' + book.id" class="" *ngFor="let book of books">
-        {{book.name}}
-      </a>
-    </p-accordionTab>
-
+  <p-accordion [value]="['0']" [multiple]="false">
+    <p-accordion-panel value="0">
+      <p-accordion-header class="p-accordion-header-link">Movies</p-accordion-header>
+       <p-accordion-content>
+         <a [href]="'/movie/' + movie.id" class="" *ngFor="let movie of movies">
+           {{movie.title}}
+          </a>
+        </p-accordion-content>
+    </p-accordion-panel>
+    <p-accordion-panel value="1">
+      <p-accordion-header  class="p-accordion-header-link">People</p-accordion-header>
+      <p-accordion-content>
+        <a [href]="'/person/' + person.id" class="" *ngFor="let person of famousPeople">
+          {{person.name}}
+        </a>
+      </p-accordion-content>
+    </p-accordion-panel>
+    <p-accordion-panel value="2">
+      <p-accordion-header  class="p-accordion-header-link">Books</p-accordion-header>
+      <p-accordion-content>
+        <a [href]="'/book/' + book.id" class="" *ngFor="let book of books">
+          {{book.name}}
+        </a>
+      </p-accordion-content>
+    </p-accordion-panel>
   </p-accordion>
 
 </aside>

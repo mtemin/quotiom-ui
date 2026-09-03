@@ -15,7 +15,7 @@ import {setCurrentCategory} from "../../state/currentCategory/currentCategory.ac
   standalone: true,
   imports: [
     NgForOf,
-    NgClass,
+    // NgClass,
     CommonModule,
     NavbarComponent,
     CategoryCardComponent,
@@ -35,7 +35,7 @@ export class CategoriesComponent {
     this.currentCategory$ = store.select('currentCategory');
 
   }
-  
+
   solagit(category: string) {
     let categoryCard = document.querySelector(`#${category}-topic`);
     if (categoryCard) {

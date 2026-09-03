@@ -6,7 +6,7 @@ import {NavbarComponent} from "../../components/navbar/navbar.component";
   selector: 'app-page-not-found',
   standalone: true,
   imports: [
-    NavbarComponent,
+    // NavbarComponent,
     RouterLink
 
   ],
