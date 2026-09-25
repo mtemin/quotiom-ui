@@ -1,0 +1,10 @@
+    <div class="filter-and-sort">
+      <div class="search">
+        <input type="search" name="quoteSearch" id="quoteSearch">
+        <input type="button" value="Search">
+      </div>
+      <div class="sort">
+        <button (click)="sortBy('mostLiked')" class="most-liked">Most Liked</button>
+        <button (click)="sortBy('recentlyAdded')" class="recently-added">Recently Added</button>
+      </div>
+    </div>

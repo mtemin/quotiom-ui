@@ -1,21 +1,20 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {NavbarComponent} from "../../components/navbar/navbar.component";
-import {CategoryCardComponent} from "../../components/category-card/category-card.component";
-import {NgForOf} from "@angular/common";
-import {QuoteComponent} from "../../components/quote/quote.component";
+import { FilteringBarComponent } from '../../components/filtering-bar/filtering-bar';
 import {CategoriesSidebarComponent} from "../../components/categories-sidebar/categories-sidebar.component";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
+import {QuoteComponent} from "../../components/quote/quote.component";
 import {quotes} from "../../mockDB/quotes";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-quote-list',
   standalone: true,
   imports: [
+    CommonModule,
     NavbarComponent,
-    // CategoryCardComponent,
-
-    NgForOf,
+    FilteringBarComponent,
+    CategoriesSidebarComponent,
     QuoteComponent,
-    CategoriesSidebarComponent
   ],
   templateUrl: './quote-list.component.html',
   styleUrl: './quote-list.component.scss',

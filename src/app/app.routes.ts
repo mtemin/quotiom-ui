@@ -29,5 +29,5 @@ export const routes: Routes = [
   { path: '**',
     component: PageNotFoundComponent,
     title:'Page not found'
-  },  // Wildcard route for a 404 page
+  },
 ];
