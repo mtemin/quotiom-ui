@@ -7,10 +7,17 @@ import { Component, output } from '@angular/core';
   templateUrl: './filtering-bar.html',
 })
 export class FilteringBarComponent {
-  //  deleteBook = output('sortByMostLiked')
-  //  deleteBook = output('sortByRecentlyAdded')
+  sortByMostLiked = output<void>()
+  sortByRecentlyAdded = output<void>()
 
-  sortBy(parameter: string) {
+  onSort(parameter: string) {
+    if(parameter == 'mostLiked'){
+      this.sortByMostLiked.emit()
+    }
+
+    if(parameter == 'recentlyAdded') {
+      this.sortByRecentlyAdded.emit()
+    }
 
   }
 }

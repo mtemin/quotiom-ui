@@ -5,7 +5,10 @@
 
   <section id="quotes">
 
-    <app-filtering-bar></app-filtering-bar>
+    <app-filtering-bar
+    (sortByMostLiked)="sortBy('mostLiked')"
+    (sortByRecentlyAdded)="sortBy('recentlyAdded')"
+    />
 
       <section id="quote-list">
       <app-quote

@@ -24,4 +24,17 @@ import { CommonModule } from '@angular/common';
 export class QuoteListComponent {
 
   protected readonly quotes = quotes;
+
+  sortBy(param: string){
+    if(param=='mostLiked'){
+      quotes.sort((a, b) =>
+        (a.likes > b.likes ? -1 : 1)
+      );
+    }
+    // if(param=='recentlyAdded'){
+    //   quotes.sort((a, b) =>
+    //     (a.likes > b.likes ? -1 : 1)
+    //   );
+    // }
+  }
 }
