@@ -1,0 +1,15 @@
+export type QuoteApi = {
+  id: number,
+  createdAt: string,
+  updatedAt?: string,
+  text: string,
+  description?:string,
+  languageCode: string,
+  createdByUserId: number,
+  authorId?: string,
+  sourceId?: number,
+  status?: QuoteStatus,
+  quoteGroupId?: number,
+  quoteCategoryIds?: number[],
+  likes?: number,
+}
