@@ -1,20 +1,68 @@
 <app-navbar/>
 <section class="container">
-<article class="quote">
-    <p class="quote-text">
-<!--      {{text}}-->
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto debitis doloremque dolores eos illum in, perferendis sequi vel? Animi deleniti et maxime numquam officia provident quam quasi recusandae tempore velit! A, alias consectetur culpa cum cupiditate doloribus error eveniet illum magni neque, nulla officiis quasi rem tempora vel veniam voluptas!
-    </p>
-    <div class="quote-lower-body">
+  <a class="back-link" routerLink="/quotes">
+    <i class="pi pi-arrow-left"></i> All quotes
+  </a>
+
+  @let s = state();
+  @if (s.status === 'loading') {
+    <article class="quote quote--placeholder" aria-busy="true">
+      <div class="skeleton skeleton--text"></div>
+      <div class="skeleton skeleton--text short"></div>
+      <div class="skeleton skeleton--meta"></div>
+    </article>
+  } @else if (s.status === 'error') {
+    <article class="quote quote--error" role="alert">
+      <p class="error-title">Couldn't load this quote</p>
+      @for (message of s.messages; track $index) {
+        <p class="error-message">{{ message }}</p>
+      }
+    </article>
+  } @else {
+    <article class="quote">
+      @if (s.quote.status !== QuoteStatus.Approved) {
+        <span class="status-badge" [class]="'status-badge status-' + s.quote.status">
+          {{ QuoteStatus[s.quote.status] }}
+        </span>
+      }
+
+      <blockquote class="quote-text" [attr.lang]="s.quote.languageCode">
+        “{{ s.quote.text }}”
+      </blockquote>
+
       <p class="quote-author">
-<!--        {{ author }}-->
-        MEMED
+        @if (s.quote.authorId != null) {
+          Author #{{ s.quote.authorId }}
+        } @else {
+          Unknown author
+        }
       </p>
-      <p class="quote-likes">
-        <i class="pi pi-thumbs-up" style="font-size: 0.8rem"></i>
-<!--        {{likes}}-->
-        459
-      </p>
-    </div>
-  </article>
+
+      @if (s.quote.description) {
+        <p class="quote-description">{{ s.quote.description }}</p>
+      }
+
+      @if (s.categories.length) {
+        <ul class="quote-categories" aria-label="Categories">
+          @for (category of s.categories; track category.id) {
+            <li class="category-chip" [title]="category.description ?? ''">{{ category.name }}</li>
+          }
+        </ul>
+      }
+
+      <footer class="quote-lower-body">
+        <span class="quote-meta">
+          @if (languageName(); as lang) {
+            <span>{{ lang }}</span>
+            <span aria-hidden="true">·</span>
+          }
+          <time [attr.datetime]="s.quote.createdAt">{{ s.quote.createdAt | date: 'mediumDate' }}</time>
+        </span>
+        <span class="quote-likes">
+          <i class="pi pi-thumbs-up"></i>
+          {{ s.quote.likes.length }}
+        </span>
+      </footer>
+    </article>
+  }
 </section>
