@@ -12,6 +12,7 @@
   margin:0;
   padding:1rem 0.4rem;
   cursor:pointer;
+
   &:nth-child(1){
     background-color: #C66060;
   }
@@ -38,6 +39,9 @@
   }
   &:nth-child(9){
     background-color: #c7a536;
+  }
+  &:nth-child(10){
+    background-color: #D64550;
   }
 
   .card-description-visible{

@@ -42,7 +42,11 @@ const categories:Category[] = [
   {
      name:"copy pasta",
      description: "Funny internet comments&scripts"
-    },
+  },
+  {
+     name:"bumper sticker slogans",
+     description: "Notable sentences from the vehicle stickers"
+  },
 
 ]
 
