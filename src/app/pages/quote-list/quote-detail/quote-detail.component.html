@@ -30,13 +30,7 @@
         “{{ s.quote.text }}”
       </blockquote>
 
-      <p class="quote-author">
-        @if (s.quote.authorId != null) {
-          Author #{{ s.quote.authorId }}
-        } @else {
-          Unknown author
-        }
-      </p>
+      <p class="quote-author">{{ formatAuthor(s.quote) }}</p>
 
       @if (s.quote.description) {
         <p class="quote-description">{{ s.quote.description }}</p>

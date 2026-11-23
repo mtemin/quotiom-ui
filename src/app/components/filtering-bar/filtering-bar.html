@@ -1,8 +1,9 @@
     <div class="filter-and-sort">
-      <div class="search">
-        <input type="search" name="quoteSearch" id="quoteSearch">
-        <input type="button" value="Search">
-      </div>
+      <form class="search" role="search" (submit)="$event.preventDefault(); search.emit(quoteSearch.value)">
+        <input #quoteSearch type="search" name="quoteSearch" id="quoteSearch" placeholder="Search quotes"
+               aria-label="Search quotes" (input)="search.emit(quoteSearch.value)">
+        <input type="submit" value="Search">
+      </form>
       <div class="sort">
         <button (click)="onSort('mostLiked')" class="most-liked">Most Liked</button>
         <button (click)="onSort('recentlyAdded')" class="recently-added">Recently Added</button>

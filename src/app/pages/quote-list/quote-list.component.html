@@ -6,17 +6,37 @@
   <section id="quotes">
 
     <app-filtering-bar
-    (sortByMostLiked)="sortBy('mostLiked')"
-    (sortByRecentlyAdded)="sortBy('recentlyAdded')"
+    (sortByMostLiked)="sortBy.set('mostLiked')"
+    (sortByRecentlyAdded)="sortBy.set('recentlyAdded')"
+    (search)="searchTerm.set($event)"
     />
 
-      <section id="quote-list">
-      <app-quote
-        *ngFor="let quote of quotes"
-        [id]="quote.id"
-        [text]="quote.text"
-        [author]="quote.author"
-        [likes]="quote.likes"/>
+      <section id="quote-list" [attr.aria-busy]="state().status === 'loading'">
+        @let s = state();
+        @if (s.status === 'loading') {
+          @for (i of [1, 2, 3, 4]; track i) {
+            <div class="quote-skeleton"></div>
+          }
+        } @else if (s.status === 'error') {
+          <div class="quote-list-message quote-list-message--error" role="alert">
+            <p class="title">Couldn't load quotes</p>
+            @for (message of s.messages; track $index) {
+              <p>{{ message }}</p>
+            }
+          </div>
+        } @else {
+          @for (quote of visibleQuotes(); track quote.id) {
+            <app-quote
+              [id]="quote.id"
+              [text]="quote.text"
+              [author]="formatAuthor(quote)"
+              [likes]="quote.likes.length"/>
+          } @empty {
+            <div class="quote-list-message">
+              <p>{{ searchTerm().trim() ? 'No quotes match your search.' : 'No quotes yet.' }}</p>
+            </div>
+          }
+        }
       </section>
     </section>
   </main>

@@ -9,6 +9,7 @@ import { Component, output } from '@angular/core';
 export class FilteringBarComponent {
   sortByMostLiked = output<void>()
   sortByRecentlyAdded = output<void>()
+  search = output<string>()
 
   onSort(parameter: string) {
     if(parameter == 'mostLiked'){

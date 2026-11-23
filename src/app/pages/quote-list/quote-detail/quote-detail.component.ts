@@ -12,6 +12,7 @@ import {
   QuoteStatus,
   getApiErrorMessages,
 } from '../../../core/api';
+import { formatAuthor } from '../../../core/quote-format';
 
 type QuoteDetailState =
   | { status: 'loading' }
@@ -33,6 +34,7 @@ export class QuoteDetailComponent {
   private readonly categoryService = inject(CategoryService);
 
   protected readonly QuoteStatus = QuoteStatus;
+  protected readonly formatAuthor = formatAuthor;
 
   protected readonly state = toSignal(
     this.route.paramMap.pipe(
