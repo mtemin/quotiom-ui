@@ -6,7 +6,6 @@ import { CategoriesSidebarComponent } from '../../components/categories-sidebar/
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { QuoteComponent } from '../../components/quote/quote.component';
 import { QuoteDto, QuoteService, QuoteStatus, getApiErrorMessages } from '../../core/api';
-import { formatAuthor } from '../../core/quote-format';
 
 type QuoteListState =
   | { status: 'loading' }
@@ -33,7 +32,6 @@ const HIDDEN_STATUSES = new Set([QuoteStatus.Rejected, QuoteStatus.Deleted]);
 export class QuoteListComponent {
   private readonly quoteService = inject(QuoteService);
 
-  protected readonly formatAuthor = formatAuthor;
   protected readonly sortBy = signal<SortBy>('recentlyAdded');
   protected readonly searchTerm = signal('');
 

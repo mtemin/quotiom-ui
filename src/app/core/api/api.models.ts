@@ -51,6 +51,7 @@ export interface QuoteDto extends BaseEntity {
   languageCode?: string | null;
   createdByUserId: number;
   authorId?: number | null;
+  authorName?: string | null;
   sourceId?: number | null;
   status: QuoteStatus;
   quoteGroupId?: number | null;

@@ -29,7 +29,7 @@
             <app-quote
               [id]="quote.id"
               [text]="quote.text"
-              [author]="formatAuthor(quote)"
+              [author]="quote.authorName ?? 'Unknown author'"
               [likes]="quote.likes.length"/>
           } @empty {
             <div class="quote-list-message">
